@@ -9,26 +9,15 @@ namespace Assets.Scripts.Entities
     public class MazeSpawner : MonoBehaviour
     {
 
-        [SerializeField][Range(1,50)] private int mazeWidth = 1;
-        [SerializeField][Range(1,50)] private int mazeHeight = 1;
+        [SerializeField][Range(1,50)] private int _mazeWidth = 1;
+        [SerializeField][Range(1,50)] private int _mazeHeight = 1;
         
-        private WallFactory _wallFactory;
         private Maze _maze;
-
-        private void Awake()
-        {
-            _wallFactory = WallFactory.Instance;
-        }
-
-        private void Start()
-        {
-            SpawnMaze();
-        }
 
         public void SpawnMaze()
         {
             RemoveWalls();
-            _maze = MazeGenerator.Generate(new Size(mazeWidth, mazeHeight));
+            _maze = MazeGenerator.Generate(new Size(_mazeWidth, _mazeHeight));
             SpawnWalls(_maze);
         }
 
@@ -42,19 +31,19 @@ namespace Assets.Scripts.Entities
 
                     if (cellType == CellType.Wall)
                     {
-                        _wallFactory.Create(this, i, j);
+                        WallFactory.Instance.Create(this, i, j);
                     }
                 }
             }
         }
 
-        private void RemoveWalls()
+        public void RemoveWalls()
         {
             var walls = GetComponentsInChildren<Wall>();
 
             foreach (var wall in walls) 
             {
-                GameObject.Destroy(wall.gameObject);
+                GameObject.DestroyImmediate(wall.gameObject);
             }
         }
     }

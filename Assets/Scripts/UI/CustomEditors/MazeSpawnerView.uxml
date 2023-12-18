@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <uie:IntegerField label="Ширина лабиринта" value="1" name="width" binding-path="_mazeWidth" />
+    <uie:IntegerField label="Высота лабиринта" value="1" binding-path="_mazeHeight" name="height" />
+    <ui:Button text="Сгенерировать" display-tooltip-when-elided="true" name="generate" />
+    <ui:Button text="Удалить" display-tooltip-when-elided="true" name="remove" />
+</ui:UXML>
