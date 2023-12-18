@@ -356,5 +356,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: MazeSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7083324661074631973, guid: a1349c813fda05146a9a2f1a705f65fb, type: 3}
+      propertyPath: mazeWidth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083324661074631973, guid: a1349c813fda05146a9a2f1a705f65fb, type: 3}
+      propertyPath: mazeHeight
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1349c813fda05146a9a2f1a705f65fb, type: 3}

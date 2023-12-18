@@ -12,7 +12,7 @@ namespace MazeGenerating
         private const int TopLeftIndex = 1;
         private static readonly Random _random = new Random();
 
-        public Maze Generate(Size size)
+        public static Maze Generate(Size size)
         {
             CheckSize(size);
 

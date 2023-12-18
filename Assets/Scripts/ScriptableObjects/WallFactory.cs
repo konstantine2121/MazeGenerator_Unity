@@ -1,4 +1,5 @@
 using Assets.Scripts.Entities;
+using MazeGenerating.Data;
 using UnityEngine;
 
 namespace Assets.Scripts.ScriptableObjects
@@ -13,7 +14,7 @@ namespace Assets.Scripts.ScriptableObjects
         [SerializeField] private Wall _wall;
 
         #endregion Fields
-        
+
         #region Properties
 
         public static WallFactory Instance
@@ -41,7 +42,7 @@ namespace Assets.Scripts.ScriptableObjects
             return container;
         }
 
-        public Wall Create(MazeSpawner mazeSpawner) 
+        public Wall Create(MazeSpawner mazeSpawner)
         {
             var spawnerTransform = mazeSpawner.transform;
             var wall = Instantiate(_wall, spawnerTransform.position, spawnerTransform.rotation);
@@ -49,6 +50,24 @@ namespace Assets.Scripts.ScriptableObjects
             wall.transform.SetParent(spawnerTransform, true);
 
             return wall;
+        }
+
+        public Wall Create(MazeSpawner mazeSpawner, int row, int column)
+        {
+            var spawnerTransform = mazeSpawner.transform;
+            var wall = Instantiate(_wall);
+
+            var stepOffset = wall.GetComponent<BoxCollider>().size.x;
+            wall.transform.position = CalculeteWallPosition(stepOffset, row, column);
+
+            wall.transform.SetParent(spawnerTransform, false);
+
+            return wall;
+        }
+
+        private Vector3 CalculeteWallPosition(float stepOffset, int row, int column)
+        {
+            return new Vector3(row * stepOffset, 0, column * stepOffset);
         }
 
         #endregion Methods
